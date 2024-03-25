@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TaskManagerApi.Data;
+
 namespace TaskManagerApi;
 
 public class Program
@@ -7,6 +10,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("StandardConnection")));
         
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();
