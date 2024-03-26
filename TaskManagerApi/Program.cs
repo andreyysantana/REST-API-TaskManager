@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using TaskManagerApi.Data;
 
@@ -12,6 +13,14 @@ public class Program
         // Add services to the container.
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("StandardConnection")));
+        
+        builder.Services.AddScoped<AppDbContext>();
+
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.EnableSensitiveDataLogging(true));
+        
+        builder.Services.AddControllers().AddJsonOptions(options =>
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
         
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();

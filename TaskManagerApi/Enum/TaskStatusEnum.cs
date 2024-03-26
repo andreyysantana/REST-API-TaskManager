@@ -2,6 +2,6 @@
 
 public enum TaskStatusEnum
 {
-    Pedente,
-    Finalizado
+    Pending,
+    Finished
 }

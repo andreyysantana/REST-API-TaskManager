@@ -1,8 +1,8 @@
 ﻿# Default ignored files
-.idea/
 /shelf/
 /workspace.xml
 # Rider ignored files
+.idea/status
 /modules.xml
 /.idea.TaskManagerApi.iml
 /projectSettingsUpdater.xml
